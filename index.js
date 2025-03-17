@@ -49,7 +49,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin: "http://localhost:3000", // Explicitly specify frontend origin
+    origin: "https://zerodha-clone-dashboard-kr6s.onrender.com", // Explicitly specify frontend origin
     credentials: true // Allow cookies and authentication headers
   }
 ));
