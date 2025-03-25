@@ -19,9 +19,11 @@ const jwt = require("jsonwebtoken");
 //   })
 // }
 
-module.exports.verifyToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
+module.exports.verifyToken = (req, res) => {
+  const authHeader = req.headers['Authorization'];
+  console.log(authHeader);
   const token = authHeader && authHeader.split(' ')[1];
+  console.log(token);
   if (!token) return res.status(402).json({ message: "Access denied" });
 
   try {
