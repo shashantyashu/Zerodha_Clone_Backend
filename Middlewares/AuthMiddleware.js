@@ -34,10 +34,12 @@ module.exports.verifyToken = (req, res, next) => {
       } else {
         const user = await UsersModel.findById(data.id)
         if (user) return res.json({ status: true, user: user.username })
-        else return res.json({ status: false })
+        
       }
     })
   } catch (err) {
     return res.status(403).json({ message: "Invalid token" });
   }
 }
+
+
