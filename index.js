@@ -244,8 +244,8 @@ app.post("/newOrder", async (req, res) => {
 
 app.get('/protected-route',  (req, res) => { //verifyToken,
   // console.log(req);
-  const token = req.cookies.token;
-  console.log(token);
+  // const token = req.cookies.token;
+  // console.log(token);
   console.log("req.headers.cookie.token:", req.headers.authorization);
   res.json({ message: "You are authorized", user: req.user });
   // res.send(req);
