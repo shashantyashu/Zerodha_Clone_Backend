@@ -19,26 +19,27 @@ const jwt = require("jsonwebtoken");
 //   })
 // }
 
-module.exports.verifyToken = (req, res) => {
+module.exports.verifyToken = (req, res, next) => {
+  console.log(res)
   const authHeader = req.headers['Authorization'];
   console.log(authHeader);
   const token = authHeader && authHeader.split(' ')[1];
   console.log(token);
-  if (!token) return res.status(402).json({ message: "Access denied" });
+  if (!token) return res.status(401).json({ message: "Access denied" });
 
   try {
-    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // req.user = decoded;
-    // next();
-    jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
-      if (err) {
-       return res.json(token);
-      } else {
-        const user = await UsersModel.findById(data.id)
-        if (user) return res.json({ status: true, user: user.username })
-        else return res.json({ status: false })
-      }
-    })
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+    // jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
+    //   if (err) {
+    //    return res.json(token);
+    //   } else {
+    //     const user = await UsersModel.findById(data.id)
+    //     if (user) return res.json({ status: true, user: user.username })
+    //     else return res.json({ status: false })
+    //   }
+    // })
   } catch (err) {
     return res.status(403).json({ message: "Invalid token" });
   }
