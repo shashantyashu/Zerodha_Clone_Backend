@@ -25,7 +25,7 @@ const app = express();
 // ));
 
 const allowedOrigins = [
-  'https://superb-axolotl-925714.netlify.app', // your Netlify site
+  'https://frabjous-croissant-88bfc1.netlify.app', // your Netlify site
   'http://localhost:3000',                  // for local dev
 ];
 
