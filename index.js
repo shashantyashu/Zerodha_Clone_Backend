@@ -241,6 +241,10 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
+app.get('/protected-route', verifyToken, (req, res) => {
+  res.json({ message: "You are authorized", user: req.user });
+});
+
 app.listen(PORT,  () => {  //"0.0.0.0" ,
   console.log(`Server is listening on port ${PORT}`);
   mongoose.connect(uri)

@@ -58,9 +58,14 @@ module.exports.Login = async (req, res, next) => {
       sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24,
     });
-    res
-      .status(201)
-      .json({ message: "User logged in successfully", success: true });
+    // res
+    //   .status(201)
+    //   .json({ message: "User logged in successfully", success: true });
+    res.status(200).json({
+      message: "Logged in successfully",
+      token: createSecretToken(user._id),
+      success: true
+    });
     next();
   } catch (error) {
     console.error(error);
