@@ -5,6 +5,9 @@ const bcrypt = require("bcryptjs");
 module.exports.Signup = async (req, res, next) => {
   try {
     const { email, password, username, createdAt } = req.body;
+    if(!email || !password || !username || !createdAt ){
+      return res.json({message:'All fields are required'})
+    }
     const existingUser = await UsersModel.findOne({ email });
     if (existingUser) {
       return res.json({ message: "User already exists" });
