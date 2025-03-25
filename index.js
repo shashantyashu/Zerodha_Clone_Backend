@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
@@ -12,25 +11,36 @@ const { OrdersModel } = require("./model/OrdersModel");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
 
-// const session = require('express-session');
-// const MongoStore = require('connect-mongo');
-
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors(
-  {
-    origin: "https://velvety-valkyrie-c4ec43.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
-    credentials: true // Allow cookies and authentication headers
-  }
-));
-// app.use(bodyParser.json());
+// app.use(cors(
+//   {
+//     origin: "https://velvety-valkyrie-c4ec43.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
+//     credentials: true // Allow cookies and authentication headers
+//   }
+// ));
 
-app.use(cookieParser());
+const allowedOrigins = [
+  'https://regal-fairy-4f653d.netlify.app', // your Netlify site
+  'http://localhost:3000',                  // for local dev
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // 👈 ALLOWS COOKIE TO BE SET
+}));
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/", authRoute);
 
