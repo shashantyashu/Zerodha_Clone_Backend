@@ -25,7 +25,7 @@ const app = express();
 // ));
 
 const allowedOrigins = [
-  'https://frabjous-croissant-88bfc1.netlify.app', // your Netlify site
+  'https://teal-vacherin-d92480.netlify.app', // your Netlify site
   'http://localhost:3000',                  // for local dev
 ];
 
