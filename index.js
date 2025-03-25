@@ -25,7 +25,7 @@ const app = express();
 // ));
 
 const allowedOrigins = [
-  'https://spiffy-pastelito-0f4bfb.netlify.app', // your Netlify site
+  'https://incandescent-licorice-b28fb3.netlify.app', // your Netlify site
   'http://localhost:3000',                  // for local dev
 ];
 
