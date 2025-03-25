@@ -25,7 +25,7 @@ const app = express();
 // ));
 
 const allowedOrigins = [
-  'https://singular-phoenix-dab6d6.netlify.app', // your Netlify site
+  'https://superb-axolotl-925714.netlify.app', // your Netlify site
   'http://localhost:3000',                  // for local dev
 ];
 
