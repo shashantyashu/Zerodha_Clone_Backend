@@ -19,7 +19,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin: "https://velvety-valkyrie-c4ec43.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
+    origin: "https://zerodha-clone-dashboard-5674.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
     credentials: true // Allow cookies and authentication headers
   }
 ));
