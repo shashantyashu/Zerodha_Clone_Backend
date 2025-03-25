@@ -242,8 +242,9 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-app.get('/protected-route', verifyToken, (req, res) => {
-  res.json({ message: "You are authorized", user: req.user });
+app.get('/protected-route',  (req, res) => { //verifyToken,
+  console.log(req);
+  // res.json({ message: "You are authorized", user: req.user });
 });
 
 app.listen(PORT,  () => {  //"0.0.0.0" ,
