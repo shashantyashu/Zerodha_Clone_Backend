@@ -17,28 +17,28 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-// app.use(cors(
-//   {
-//     origin: "https://velvety-valkyrie-c4ec43.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
-//     credentials: true // Allow cookies and authentication headers
-//   }
-// ));
+app.use(cors(
+  {
+    origin: "https://velvety-valkyrie-c4ec43.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
+    credentials: true // Allow cookies and authentication headers
+  }
+));
 
-const allowedOrigins = [
-  'https://zerodha-clone-dashboard-5674.netlify.app', // your Netlify site
-  'http://localhost:3000',                  // for local dev
-];
+// const allowedOrigins = [
+//   'https://zerodha-clone-dashboard-5674.netlify.app', // your Netlify site
+//   'http://localhost:3000',                  // for local dev
+// ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // 👈 ALLOWS COOKIE TO BE SET
-}));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true, // 👈 ALLOWS COOKIE TO BE SET
+// }));
 
 app.use(express.json());
 app.use(cookieParser());
