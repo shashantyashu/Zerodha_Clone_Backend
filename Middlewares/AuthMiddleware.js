@@ -30,11 +30,11 @@ module.exports.verifyToken = (req, res, next) => {
     // next();
     jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
       if (err) {
-       return res.json({ status: false })
+       return res.json({ status: "good" })
       } else {
         const user = await UsersModel.findById(data.id)
         if (user) return res.json({ status: true, user: user.username })
-        
+        else return res.json({ status: false })
       }
     })
   } catch (err) {
