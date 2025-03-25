@@ -30,7 +30,7 @@ module.exports.verifyToken = (req, res, next) => {
     // next();
     jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
       if (err) {
-       return res.json(err);
+       return res.json(token);
       } else {
         const user = await UsersModel.findById(data.id)
         if (user) return res.json({ status: true, user: user.username })
@@ -47,3 +47,5 @@ module.exports.verifyToken = (req, res, next) => {
 //   "email":"eva@gmail.com",
 //   "password":"eva"
 // }
+
+//protected-route
