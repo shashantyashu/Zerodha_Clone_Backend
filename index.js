@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
@@ -20,40 +20,13 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-// const store = MongoStore.create({
-//     mongoUrl: uri,
-//     crypto: {
-//         secret: process.env.SECRET,
-//     },
-//     touchAfter: 24 * 3600,
-// });
-
-// store.on("error", () => {
-//   console.log("ERROR in MONGO SESSION STORE", err);
-// });
-
-// const sessionOption = {
-//   store,
-//   secret: process.env.SECRET,
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//       expires: Date.now() + 7 * 24 * 60 * 60 *1000,
-//       maxAge: 7 * 24 * 60 * 60 *1000,
-//       httpOnly: true,
-//   },
-// };
-
-// app.use(session(sessionOption));
-
-
 app.use(cors(
   {
     origin: "https://celebrated-alfajores-a7f4c6.netlify.app", // Explicitly specify frontend origin [http://localhost:3000]  https://zerodha-clone-dashboard-kr6s.onrender.com
     credentials: true // Allow cookies and authentication headers
   }
 ));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 app.use(cookieParser());
 
