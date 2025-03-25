@@ -10,6 +10,7 @@ const { OrdersModel } = require("./model/OrdersModel");
 
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
+const { verifyToken } = require("../Middlewares/AuthMiddleware"); //userVerification
 
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
