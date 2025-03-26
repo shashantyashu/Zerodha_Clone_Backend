@@ -9,7 +9,7 @@ const { PositionsModel } = require("./model/PositionsModel");
 const { OrdersModel } = require("./model/OrdersModel");
 
 const cookieParser = require("cookie-parser");
-const authRoute = require("./Routes/AuthRoute");
+// const authRoute = require("./Routes/AuthRoute");
 const { verifyToken } = require("./Middlewares/AuthMiddleware"); //userVerification
 
 const PORT = process.env.PORT || 3002;
@@ -43,7 +43,7 @@ app.use(cors(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/", authRoute);
+// app.use("/", authRoute);
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
