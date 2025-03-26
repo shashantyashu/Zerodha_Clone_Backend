@@ -67,6 +67,8 @@ module.exports.Login = async (req, res, next) => {
       success: true
     });
     // next();
+    if (user) return res.json({ status: true, user: user.username })
+    else return res.json({ status: false })
   } catch (error) {
     console.error(error);
   }
