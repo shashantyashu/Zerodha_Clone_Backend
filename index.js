@@ -242,11 +242,11 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-app.get('/protected-route',  (req, res) => { //verifyToken,
+app.get('/protected-route', verifyToken, (req, res) => { //verifyToken,
   // console.log(req);
   // const token = req.cookies.token;
   // console.log(token);
-  console.log("req.headers.cookie.token:", req.headers.authorization);
+  // console.log("req.headers.cookie.token:", req.headers.authorization);
   res.json({ message: "You are authorized", user: req.user });
   // res.send(req);
 });
