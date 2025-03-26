@@ -40,7 +40,6 @@ module.exports.verifyToken = (req, res, next) => {
         else return res.json({ status: false })
       }
     })
-    next();
   } catch (err) {
     return res.status(403).json({ message: "Invalid token" });
   }
