@@ -28,18 +28,19 @@ module.exports.verifyToken = (req, res, next) => {
   if (!token) return res.status(401).json({ message: "Access denied" });
 
   try {
-    const decoded = jwt.verify(token, process.env.TOKEN_KEY);
-    req.user = decoded;
+    // const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+    // req.user = decoded;
+    // next();
+    jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
+      if (err) {
+       return res.json(token);
+      } else {
+        const user = await UsersModel.findById(data.id)
+        if (user) return res.json({ status: true, user: user.username })
+        else return res.json({ status: false })
+      }
+    })
     next();
-    // jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
-    //   if (err) {
-    //    return res.json(token);
-    //   } else {
-    //     const user = await UsersModel.findById(data.id)
-    //     if (user) return res.json({ status: true, user: user.username })
-    //     else return res.json({ status: false })
-    //   }
-    // })
   } catch (err) {
     return res.status(403).json({ message: "Invalid token" });
   }
