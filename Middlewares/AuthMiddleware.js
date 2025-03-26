@@ -23,7 +23,7 @@ module.exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   console.log(authHeader);
   console.log("req.headers:", authHeader);
-  const token = authHeader && authHeader.split(' ')[1];
+  const token = authHeader.split(' ')[1]; //authHeader && 
   console.log(token);
   if (!token) return res.status(401).json({ message: "Access denied" });
 
