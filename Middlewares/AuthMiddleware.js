@@ -28,7 +28,7 @@ module.exports.verifyToken = (req, res, next) => {
   if (!token) return res.status(401).json({ message: "Access denied" });
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY);
     req.user = decoded;
     next();
     // jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
