@@ -51,13 +51,13 @@ module.exports.Login = async (req, res, next) => {
       return res.json({ message: "Incorrect password" });
     }
     const token = createSecretToken(user._id);
-    // res.cookie("token", token, {
-    //   // withCredentials: true,
-    //   httpOnly: true,
-    //   secure: true,
-    //   sameSite: "None",
-    //   maxAge: 1000 * 60 * 60 * 24,
-    // });
+    res.cookie("token", token, {
+      // withCredentials: true,
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      maxAge: 1000 * 60 * 60 * 24,
+    });
     // res
     //   .status(201)
     //   .json({ message: "User logged in successfully", success: true });
